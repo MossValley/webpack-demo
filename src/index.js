@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import myName from './myName';
 import './style.css';
+import webpackimg from './webpackimg.png';
 
 function component() {
   const element = document.createElement('div');
@@ -8,6 +9,12 @@ function component() {
   // Lodash, now imported by this script
   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
   element.classList.add('hello');
+
+  // Add the image to our existing div
+  const myImg = new Image();
+  myImg.src = webpackimg;
+
+  element.appendChild(myImg);
 
   return element;
 }

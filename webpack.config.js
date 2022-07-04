@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { optimize } = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -8,6 +9,9 @@ module.exports = {
     print: './src/print.js',
   },
   devtool: 'inline-source-map',
+  devServer: {
+    static: './dist',
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Development',
@@ -16,6 +20,10 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true,    
+    clean: true,
+    publicPath: '/',
+  },
+  optimization: {
+    runtimeChunk: 'single',
   },
 };
